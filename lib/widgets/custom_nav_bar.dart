@@ -16,7 +16,8 @@ class CustomFloatingNavBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Espace entre les boutons
+        mainAxisAlignment:
+            MainAxisAlignment.spaceEvenly, // Espace entre les boutons
         children: [
           _buildNavItem(0, Icons.home, "Home"),
           _buildNavItem(1, Icons.eco, "Plants"),
@@ -29,7 +30,7 @@ class CustomFloatingNavBar extends StatelessWidget {
 
   Widget _buildNavItem(int index, IconData icon, String label) {
     bool isSelected = currentIndex == index;
-    
+
     return GestureDetector(
       onTap: () => onTap(index),
       child: AnimatedContainer(
@@ -37,11 +38,11 @@ class CustomFloatingNavBar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           // Si sélectionné : fond noir arrondi, sinon fond blanc/transparent
-          color: isSelected ? LeafyTheme.vampireBlack : Colors.white, 
+          color: isSelected ? Colors.green : Colors.white,
           borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.green.withOpacity(0.1),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

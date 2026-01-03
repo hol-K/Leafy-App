@@ -21,7 +21,9 @@ class PlantsScreen extends StatelessWidget {
               _buildYourPlantsSection(), // Liste horizontale (Basil, Carrots...)
               const SizedBox(height: 30),
               _buildIncompleteVarietiesSection(), // Grille des variétés
-              const SizedBox(height: 100), // Espace pour ne pas cacher le contenu par la barre flottante
+              const SizedBox(
+                height: 100,
+              ), // Espace pour ne pas cacher le contenu par la barre flottante
             ],
           ),
         ),
@@ -34,8 +36,14 @@ class PlantsScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Discover Your Plant", style: LeafyTheme.lightTheme.textTheme.displayLarge),
-        Text("Create a green town", style: TextStyle(color: LeafyTheme.davyGrey)),
+        Text(
+          "Discover Your Plant",
+          style: LeafyTheme.lightTheme.textTheme.displayLarge,
+        ),
+        Text(
+          "Create a green town",
+          style: TextStyle(color: LeafyTheme.davyGrey),
+        ),
       ],
     );
   }
@@ -64,8 +72,14 @@ class PlantsScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Your Plants", style: LeafyTheme.lightTheme.textTheme.titleMedium),
-            TextButton(onPressed: () {}, child: const Text("Edit", style: TextStyle(color: Colors.grey))),
+            Text(
+              "Your Plants",
+              style: LeafyTheme.lightTheme.textTheme.titleMedium,
+            ),
+            TextButton(
+              onPressed: () => (),
+              child: const Text("Edit", style: TextStyle(color: Colors.grey)),
+            ),
           ],
         ),
         SizedBox(
@@ -84,9 +98,18 @@ class PlantsScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(myPlants[index]["icon"]!, style: const TextStyle(fontSize: 30)),
+                    Text(
+                      myPlants[index]["icon"]!,
+                      style: const TextStyle(fontSize: 30),
+                    ),
                     const SizedBox(height: 8),
-                    Text(myPlants[index]["name"]!, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                    Text(
+                      myPlants[index]["name"]!,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -104,7 +127,10 @@ class PlantsScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Incomplete varieties", style: LeafyTheme.lightTheme.textTheme.titleMedium),
+            Text(
+              "Incomplete varieties",
+              style: LeafyTheme.lightTheme.textTheme.titleMedium,
+            ),
             Text("See All", style: TextStyle(color: LeafyTheme.persianGreen)),
           ],
         ),
@@ -117,8 +143,12 @@ class PlantsScreen extends StatelessWidget {
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
           children: [
-            _buildPlantGridCard("Ungarischer Knoblauch", "https://via.placeholder.com/150"),
-            _buildPlantGridCard("Gaindorfer Winter", "https://via.placeholder.com/150"),
+            _buildPlantGridCard("Plantes Verte", "plant1.jpg"),
+            _buildPlantGridCard("Plantes Oval Bleu", "plant2.jpg"),
+            _buildPlantGridCard("Plantes Verte", "plant3.jpg"),
+            _buildPlantGridCard("Petite Plante", "plant4.jpg"),
+            _buildPlantGridCard("Plante Rouge", "plant5.jpg"),
+            _buildPlantGridCard("Tomates", "plant6.jpg"),
           ],
         ),
       ],
@@ -136,8 +166,14 @@ class PlantsScreen extends StatelessWidget {
         children: [
           Expanded(
             child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
-              child: Image.network(imageUrl, fit: BoxFit.cover, width: double.infinity),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(25),
+              ),
+              child: Image.asset(
+                imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
             ),
           ),
           Padding(
@@ -145,20 +181,33 @@ class PlantsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
                     const Icon(Icons.timelapse, size: 14, color: Colors.grey),
                     const SizedBox(width: 4),
-                    Text("Incomplete", style: TextStyle(fontSize: 10, color: Colors.grey)),
+                    Text(
+                      "Incomplete",
+                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                    ),
                     const Spacer(),
-                    const Icon(Icons.arrow_outward, size: 14, color: Colors.grey),
+                    const Icon(
+                      Icons.arrow_outward,
+                      size: 14,
+                      color: Colors.grey,
+                    ),
                   ],
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

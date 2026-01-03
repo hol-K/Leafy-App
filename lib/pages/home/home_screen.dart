@@ -31,14 +31,22 @@ class HomeScreen extends StatelessWidget {
       children: [
         const CircleAvatar(
           radius: 25,
-          backgroundImage: NetworkImage('AppImages.userAnthony'), // Image de Antony Thomas
+          backgroundImage: NetworkImage(
+            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
+          ), // Image de Antony Thomas
         ),
         const SizedBox(width: 12),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Good Morning!", style: TextStyle(color: LeafyTheme.davyGrey, fontSize: 14)),
-            Text("Antony Thomas", style: LeafyTheme.lightTheme.textTheme.titleMedium), //
+            Text(
+              "Good Morning!",
+              style: TextStyle(color: LeafyTheme.davyGrey, fontSize: 14),
+            ),
+            Text(
+              "Antony Thomas",
+              style: LeafyTheme.lightTheme.textTheme.titleMedium,
+            ), //
           ],
         ),
         const Spacer(),
@@ -66,7 +74,7 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
         image: const DecorationImage(
-          image: NetworkImage('AppImages.buildBanner'), // Image de jardinage
+          image: AssetImage("assets/plant.jpg"),
           fit: BoxFit.cover,
         ),
       ),
@@ -79,7 +87,11 @@ class HomeScreen extends StatelessWidget {
               children: [
                 const Text(
                   "Create\nbeautiful\nPlanting Plans", //
-                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
@@ -87,9 +99,14 @@ class HomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  child: const Text("Create a free planting plan", style: TextStyle(fontSize: 12)), //
+                  child: const Text(
+                    "Create a free planting plan",
+                    style: TextStyle(fontSize: 12),
+                  ), //
                 ),
               ],
             ),
@@ -106,7 +123,10 @@ class HomeScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Face of Leafy", style: LeafyTheme.lightTheme.textTheme.titleMedium), //
+            Text(
+              "Face of Leafy",
+              style: LeafyTheme.lightTheme.textTheme.titleMedium,
+            ), //
             const Icon(Icons.more_horiz),
           ],
         ),
@@ -117,6 +137,10 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: [
               _buildVideoCard(),
+              _buildVideoCard1(),
+              _buildVideoCard0(),
+              _buildVideoCard1(),
+              _buildVideoCard0(),
               _buildVideoCard(),
             ],
           ),
@@ -132,7 +156,7 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30), // Formes organiques
         image: const DecorationImage(
-          image: NetworkImage('AppImages.buildVideo'), // Image de la vidéo
+          image: AssetImage("plant1.jpg"),
           fit: BoxFit.cover,
         ),
       ),
@@ -142,9 +166,64 @@ class HomeScreen extends StatelessWidget {
         children: [
           Icon(Icons.play_circle_fill, color: Colors.white, size: 30),
           SizedBox(width: 8),
-          Text("Welcome to Leafy\n02 Videos", style: TextStyle(color: Colors.white, fontSize: 10)), //
+          Text(
+            "Welcome to Leafy\n02 Videos",
+            style: TextStyle(color: Colors.white, fontSize: 10),
+          ), //
         ],
       ),
     );
   }
+}
+
+Widget _buildVideoCard1() {
+  return Container(
+    width: 180,
+    margin: const EdgeInsets.only(right: 15),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(30), // Formes organiques
+      image: const DecorationImage(
+        image: AssetImage("care.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+    alignment: Alignment.bottomCenter,
+    padding: const EdgeInsets.all(15),
+    child: const Row(
+      children: [
+        Icon(Icons.play_circle_fill, color: Colors.white, size: 30),
+        SizedBox(width: 8),
+        Text(
+          "Welcome to Leafy\n02 Videos",
+          style: TextStyle(color: Colors.white, fontSize: 10),
+        ), //
+      ],
+    ),
+  );
+}
+
+Widget _buildVideoCard0() {
+  return Container(
+    width: 180,
+    margin: const EdgeInsets.only(right: 15),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(30), // Formes organiques
+      image: const DecorationImage(
+        image: AssetImage("plant5.jpg"),
+        fit: BoxFit.cover,
+      ),
+    ),
+    alignment: Alignment.bottomCenter,
+    padding: const EdgeInsets.all(15),
+    child: const Row(
+      children: [
+        Icon(Icons.play_circle_fill, color: Colors.white, size: 30),
+        SizedBox(width: 8),
+        Text(
+          "Welcome to Leafy\n02 Videos",
+          style: TextStyle(color: Colors.white, fontSize: 10),
+        ), //
+      ],
+    ),
+  );
 }

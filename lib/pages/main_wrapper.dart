@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_nav_bar.dart'; 
-import 'package:leafy_app/features/home/home_screen.dart';
-import 'package:leafy_app/features/plants/plants_screen.dart';
-import 'package:leafy_app/features/care/care_screen.dart';
-import 'package:leafy_app/features/profile/profile_screen.dart';
-
+import '../widgets/custom_nav_bar.dart';
+import 'package:leafy_app/pages/home/home_screen.dart';
+import 'package:leafy_app/pages/plants/plants_screen.dart';
+import 'package:leafy_app/pages/care/care_screen.dart';
+import 'package:leafy_app/pages/profile/profile_screen.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({super.key});
@@ -19,7 +18,7 @@ class _MainWrapperState extends State<MainWrapper> {
 
   // 2. Liste des écrans correspondant aux icônes de la barre
   // Pour l'instant, on utilise des Placeholder pour ne pas avoir d'erreurs
- final List<Widget> _pages = [
+  final List<Widget> _pages = [
     const HomeScreen(),
     const PlantsScreen(),
     const CareScreen(),
@@ -30,8 +29,8 @@ class _MainWrapperState extends State<MainWrapper> {
   Widget build(BuildContext context) {
     return Scaffold(
       // 3. IMPORTANT : Permet au contenu de défiler derrière la barre flottante
-      extendBody: true, 
-      
+      extendBody: true,
+
       // 4. Affiche la page correspondant à l'index actuel
       body: _pages[_currentIndex],
 

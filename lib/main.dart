@@ -1,7 +1,7 @@
 // importation des packages nécessaires
 import 'package:flutter/material.dart';
-import 'package:leafy_app/features/main_wrapper.dart';
-import 'theme.dart'; 
+import 'package:leafy_app/pages/main_wrapper.dart';
+import 'theme.dart';
 
 //point de départ de l'application
 void main() {
