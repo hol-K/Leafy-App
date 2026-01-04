@@ -17,7 +17,7 @@ class LeafyApp extends StatelessWidget {
     return MaterialApp(
       // annulation du bandeau debug
       debugShowCheckedModeBanner: false,
-      title: 'Leafy Gardening',
+      title: 'App Nature',
       theme: LeafyTheme.lightTheme, // Utilisation du thème centralisé
       // on définit ici le point d'entrée de l'application par MainWrapper
       home: const MainWrapper(),

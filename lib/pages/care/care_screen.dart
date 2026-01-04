@@ -22,10 +22,10 @@ class CareScreen extends StatelessWidget {
               _buildWeatherHeader(),
               const SizedBox(height: 25),
 
-              // ✅ SECTION PLANT HEALTH (comme Incomplete varieties)
+              // SECTION PLANT HEALTH
               _buildDiseaseSection(),
 
-              const SizedBox(height: 100),
+              const SizedBox(height: 50),
             ],
           ),
         ),
@@ -78,7 +78,7 @@ class CareScreen extends StatelessWidget {
     );
   }
 
-  // 🦠 SECTION Disease (IDENTIQUE à Incomplete varieties)
+  // 🦠 SECTION Disease Incomplete varieties)
   Widget _buildDiseaseSection() {
     return Column(
       children: [
@@ -103,10 +103,14 @@ class CareScreen extends StatelessWidget {
           mainAxisSpacing: 15,
           children: [
             _buildDiseaseGridCard("Angular", "Today 4:00 PM", "disease1.jpg"),
-            _buildDiseaseGridCard("Ascochyta Blight", "Today 4:00 PM", "disease2.jpg"),
+            _buildDiseaseGridCard(
+              "Ascochyta Blight",
+              "Today 4:00 PM",
+              "disease2.jpg",
+            ),
             _buildDiseaseGridCard("Leaf Spot", "Yesterday", "disease3.jpg"),
             _buildDiseaseGridCard("Mosaic Virus", "2 days ago", "disease4.jpg"),
-            _buildDiseaseGridCard("Mosaic Virus", "2 days ago", "disease5.jpg")
+            _buildDiseaseGridCard("Mosaic Virus", "2 days ago", "disease5.jpg"),
           ],
         ),
       ],

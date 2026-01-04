@@ -7,9 +7,9 @@ class ExpertProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF4F9F6),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: const Icon(Icons.arrow_back, color: Colors.black),
         actions: const [
@@ -20,86 +20,74 @@ class ExpertProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // 1. Photo et Nom
+            const SizedBox(height: 10),
+
+            // Photo profil
             const CircleAvatar(
-              radius: 60,
-              backgroundImage: NetworkImage(
-                'AppImages.expertWolfgang',
-              ), // Photo de Wolfgang Palme
+              radius: 55,
+              backgroundImage: AssetImage("profile.jpg"),
             ),
-            const SizedBox(height: 15),
+
+            const SizedBox(height: 12),
+
             Text(
               "Wolfgang Palme",
-              style: LeafyTheme.lightTheme.textTheme.displayLarge,
+              style: LeafyTheme.lightTheme.textTheme.titleLarge,
             ),
+
+            const SizedBox(height: 6),
+
+            // ⭐ étoiles
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                5,
+                (index) =>
+                    const Icon(Icons.star, size: 16, color: Colors.amber),
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
             Text(
-              "Agriculture Specialist",
-              style: TextStyle(color: Colors.grey[600], fontSize: 16),
+              "A farmer cultivates crops and raises livestock, providing essential food.",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey[700], fontSize: 13),
             ),
 
             const SizedBox(height: 20),
 
-            // 2. Statistiques (Followers & Rating)
+            // Stats
             _buildStatsRow(),
 
             const SizedBox(height: 25),
 
-            // 3. Biographie
+            // Carte expert
+            _buildExpertCard(),
+
+            const SizedBox(height: 25),
+
+            // Section légumes
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Biography",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "Wolfgang Palme is a renowned researcher and expert in winter vegetable cultivation. He heads the vegetable gardening department at the Zinsenhof research station.",
-                    style: TextStyle(color: Colors.grey[700], height: 1.5),
-                    textAlign: TextAlign.justify,
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: _buildVegetableSection(),
             ),
 
-            const SizedBox(height: 30),
-
-            // 4. Bouton de contact
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: LeafyTheme.persianGreen,
-                  minimumSize: const Size(double.infinity, 55),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                child: const Text(
-                  "Follow Expert",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-              ),
-            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
     );
   }
 
-  // Widget pour la ligne des statistiques
+  // Stats
   Widget _buildStatsRow() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildStatItem("Followers", "1.2k"),
-        Container(height: 30, width: 1, color: Colors.grey[300]), // Séparateur
-        _buildStatItem("Rating", "5.0 ★"),
-        Container(height: 30, width: 1, color: Colors.grey[300]), // Séparateur
-        _buildStatItem("Plants", "48"),
+        _buildStatItem("Follow", "632"),
+        const SizedBox(width: 25),
+        _buildStatItem("Followers", "632"),
       ],
     );
   }
@@ -109,14 +97,102 @@ class ExpertProfileScreen extends StatelessWidget {
       children: [
         Text(
           value,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: LeafyTheme.persianGreen,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         Text(label, style: const TextStyle(color: Colors.grey, fontSize: 12)),
       ],
+    );
+  }
+
+  // Carte expert secondaire
+  Widget _buildExpertCard() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: ListTile(
+          leading: const CircleAvatar(backgroundImage: AssetImage("domi.jpg")),
+          title: const Text("Tasha Dominguez"),
+          subtitle: const Text("Agriculture Specialist"),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+        ),
+      ),
+    );
+  }
+
+  // Section légumes
+  Widget _buildVegetableSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Winter Vegetable",
+              style: LeafyTheme.lightTheme.textTheme.titleMedium,
+            ),
+            Text("12 items", style: TextStyle(color: LeafyTheme.persianGreen)),
+          ],
+        ),
+        const SizedBox(height: 15),
+
+        SizedBox(
+          height: 230, // hauteur obligatoire pour le scroll horizontal
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              _buildGridCard("Carrot", "carrotte.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Cabbage", "cabbage.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Spinach", "spinach.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Broccoli", "broccoli.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Radis", "radis.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Cabbage", "cabbage.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Spinach", "spinach.jpg"),
+              const SizedBox(width: 30),
+              _buildGridCard("Broccoli", "broccoli.jpg"),
+              _buildGridCard("Carrot", "carrotte.jpg"),
+              const SizedBox(width: 30),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGridCard(String title, String imageUrl) {
+    return Container(
+      width: 160, // obligatoire en horizontal
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
+            child: SizedBox(
+              height: 140, // ✅ hauteur FIXE
+              width: double.infinity,
+              child: Image.asset(imageUrl, fit: BoxFit.cover),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Text(
+              title,
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
